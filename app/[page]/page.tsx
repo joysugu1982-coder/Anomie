@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-
 import Prose from 'components/prose';
 import { getPage } from 'lib/shopify';
 import { notFound } from 'next/navigation';
@@ -31,9 +30,11 @@ export default async function Page(props: { params: Promise<{ page: string }> })
 
   return (
     <>
-      <h1 className="mb-8 text-5xl font-bold">{page.title}</h1>
-      <Prose className="mb-8" html={page.body} />
-      <p className="text-sm italic">
+      <h1 className="mb-8 text-5xl font-gafiton">{page.title}</h1>
+
+      <Prose className="mb-8 font-gafiton" html={page.body} />
+
+      <p className="text-sm italic font-gafiton">
         {`This document was last updated on ${new Intl.DateTimeFormat(undefined, {
           year: 'numeric',
           month: 'long',

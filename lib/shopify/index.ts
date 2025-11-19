@@ -78,6 +78,12 @@ export async function shopifyFetch<T>({
   variables?: ExtractVariables<T>;
 }): Promise<{ status: number; body: T } | never> {
   try {
+    // -----------------------------
+    // ADD A SAFE 30s TIMEOUT FIX
+    // -----------------------------
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+
     const result = await fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -88,8 +94,12 @@ export async function shopifyFetch<T>({
       body: JSON.stringify({
         ...(query && { query }),
         ...(variables && { variables })
-      })
+      }),
+      signal: controller.signal, // IMPORTANT
+      cache: 'no-store'          // FIX: Prevent bug in Turbopack cache
     });
+
+    clearTimeout(timeout);
 
     const body = await result.json();
 
@@ -117,6 +127,7 @@ export async function shopifyFetch<T>({
     };
   }
 }
+
 
 const removeEdgesAndNodes = <T>(array: Connection<T>): T[] => {
   return array.edges.map((edge) => edge?.node);

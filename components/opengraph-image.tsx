@@ -1,24 +1,17 @@
-import { ImageResponse } from 'next/og';
-import LogoIcon from './icons/logo';
-import { join } from 'path';
-import { readFile } from 'fs/promises';
+import { ImageResponse } from "next/og";
+import { readFile } from "fs/promises";
+import path from "path";
+import LogoIcon from "./icons/logo";
 
-export type Props = {
-  title?: string;
-};
+export const runtime = "nodejs"; // IMPORTANT FIX
 
-export default async function OpengraphImage(
-  props?: Props
-): Promise<ImageResponse> {
-  const { title } = {
-    ...{
-      title: process.env.SITE_NAME
-    },
-    ...props
-  };
+export type Props = { title?: string };
 
-  const file = await readFile(join(process.cwd(), './fonts/Inter-Bold.ttf'));
-  const font = Uint8Array.from(file).buffer;
+export default async function OpengraphImage(props?: Props) {
+  const title = props?.title || process.env.SITE_NAME;
+
+  const fontPath = path.join(process.cwd(), "public", "fonts", "Gafiton-Rounded.ttf");
+  const fontData = await readFile(fontPath);
 
   return new ImageResponse(
     (
@@ -26,7 +19,10 @@ export default async function OpengraphImage(
         <div tw="flex flex-none items-center justify-center border border-neutral-700 h-[160px] w-[160px] rounded-3xl">
           <LogoIcon width="64" height="58" fill="white" />
         </div>
-        <p tw="mt-12 text-6xl font-bold text-white">{title}</p>
+
+        <p tw="mt-12 text-6xl text-white" style={{ fontFamily: "Gafiton" }}>
+          {title}
+        </p>
       </div>
     ),
     {
@@ -34,12 +30,12 @@ export default async function OpengraphImage(
       height: 630,
       fonts: [
         {
-          name: 'Inter',
-          data: font,
-          style: 'normal',
-          weight: 700
-        }
-      ]
+          name: "Gafiton",
+          data: fontData,
+          weight: 400,
+          style: "normal",
+        },
+      ],
     }
   );
 }

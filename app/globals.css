@@ -1,16 +1,37 @@
-@import 'tailwindcss';
-
+@import "tailwindcss";
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
 
+/* -----------------------------------------------------
+   GLOBAL FONT VARIABLE (from next/font/local)
+----------------------------------------------------- */
+:root {
+  --font-gafiton: 'Gafiton', sans-serif;
+}
+
+/* -----------------------------------------------------
+   APPLY GAFITON FONT ABSOLUTELY EVERYWHERE
+----------------------------------------------------- */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+  html, body, * {
+    font-family: var(--font-gafiton) !important;
   }
+
+  /* Fix Tailwind Typography plugin (prose) */
+  .prose, .prose * {
+    font-family: var(--font-gafiton) !important;
+  }
+}
+
+/* -----------------------------------------------------
+   BASE STYLES
+----------------------------------------------------- */
+*,
+::after,
+::before,
+::backdrop,
+::file-selector-button {
+  border-color: var(--color-gray-200, currentColor);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,8 +46,18 @@
   }
 }
 
+/* -----------------------------------------------------
+   ACCESSIBILITY / INTERACTION FOCUS RINGS
+----------------------------------------------------- */
 a,
 input,
 button {
-  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
+  @apply
+    focus-visible:outline-hidden
+    focus-visible:ring-2
+    focus-visible:ring-neutral-400
+    focus-visible:ring-offset-2
+    focus-visible:ring-offset-neutral-50
+    dark:focus-visible:ring-neutral-600
+    dark:focus-visible:ring-offset-neutral-900;
 }
