@@ -10,7 +10,8 @@ export type Props = { title?: string };
 export default async function OpengraphImage(props?: Props) {
   const title = props?.title || process.env.SITE_NAME;
 
-  const fontPath = path.join(process.cwd(), "public", "fonts", "Gafiton-Rounded.ttf");
+  const fontPath = path.join(process.cwd(), "app", "fonts", "Gafiton-Rounded.ttf");
+
   const fontData = await readFile(fontPath);
 
   return new ImageResponse(

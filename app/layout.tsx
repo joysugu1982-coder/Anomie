@@ -10,9 +10,8 @@ import { baseUrl } from 'lib/utils';
 
 const { SITE_NAME } = process.env;
 
-// --- Custom local font ---
 const Gafiton = localFont({
-  src: "../public/fonts/Gafiton-Rounded.ttf",
+  src: "/fonts/Gafiton-Rounded.ttf",
   variable: "--font-gafiton",
   weight: "400",
 });
@@ -30,17 +29,17 @@ export const metadata = {
   }
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children
 }: {
   children: ReactNode;
 }) {
-  const cart = getCart();
+  const cartPromise = getCart();
 
   return (
     <html lang="en" className={Gafiton.variable}>
-      <body className="font-gafiton bg-neutral-50 text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white">
-        <CartProvider cartPromise={cart}>
+      <body className="font-gafiton bg-neutral-50 text-black dark:bg-neutral-900 dark:text-white">
+        <CartProvider cartPromise={cartPromise}>
           <Navbar />
           <main>
             {children}

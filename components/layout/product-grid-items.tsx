@@ -6,7 +6,8 @@ import Link from 'next/link';
 export default function ProductGridItems({ products }: { products: Product[] }) {
   return (
     <>
-      {products.map((product) => (
+      {products.map((product: Product) => (
+
         <Grid.Item key={product.handle} className="animate-fadeIn">
 
           {/* FIX: remove h-full, add block */}
