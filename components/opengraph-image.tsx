@@ -3,7 +3,7 @@ import LogoIcon from "./icons/logo";
 
 export const runtime = "edge";
 
-export default async function OpengraphImage() {
+export default function OpengraphImage() {
   const title = process.env.SITE_NAME || "My Store";
 
   return new ImageResponse(
@@ -13,22 +13,23 @@ export default async function OpengraphImage() {
           display: "flex",
           height: "100%",
           width: "100%",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
           background: "black",
           color: "white",
           fontFamily: "sans-serif",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          gap: "40px",        // avoids extra child nodes
         }}
       >
-        {/* FIXED: MUST ADD display:flex HERE */}
+        {/* Logo */}
         <div
           style={{
             display: "flex",
             height: 160,
             width: 160,
             border: "1px solid #666",
-            borderRadius: "24px",
+            borderRadius: 24,
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -36,28 +37,27 @@ export default async function OpengraphImage() {
           <LogoIcon width="64" height="58" fill="white" />
         </div>
 
-        {/* FIXED: P TAG MUST HAVE display:flex TOO */}
-        <p
+        {/* Title */}
+        <div
           style={{
             display: "flex",
-            marginTop: 48,
             fontSize: 72,
             fontWeight: 700,
           }}
         >
           {title}
-        </p>
+        </div>
 
-        <p
+        {/* Subtitle */}
+        <div
           style={{
             display: "flex",
-            marginTop: 16,
             fontSize: 32,
             fontWeight: 400,
           }}
         >
           Premium Fashion Store
-        </p>
+        </div>
       </div>
     ),
     {
