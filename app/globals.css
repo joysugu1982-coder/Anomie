@@ -1,0 +1,225 @@
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Nobile:wght@400;700&display=swap');
+
+/* 2️⃣ Declare layers BEFORE Tailwind */
+@layer theme, base, components, utilities;
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 4️⃣ Theme layer (optional) */
+@layer theme {
+  :root {
+    --bg: #f2f2f2;
+    --text: #111;
+    --card-bg: rgba(255,255,255,0.55);
+  }
+
+  .dark-theme {
+    --bg: #111;
+    --text: #f3f3f3;
+    --card-bg: rgba(40,40,40,0.55);
+  }
+}
+
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+  }
+}
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  img[loading="lazy"] {
+    clip-path: inset(0.6px);
+  }
+}
+
+a,
+input,
+button {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
+}
+
+/* @layer base {
+  html {
+    font-family: "Gafiton", sans-serif;
+  }
+} */
+
+@layer base {
+
+  @font-face {
+  font-family: "Gafiton";
+  src: url("/fonts/Gafiton.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+  /* Default body text */
+  body {
+    font-family: "Montserrat", sans-serif;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Nobile", sans-serif;
+  }
+
+  /* Logo (ANOMIE) only */
+  .logo-font {
+    font-family: "Gafiton", sans-serif !important;
+  }
+}
+
+.auth-title {
+  font-family: "Nobile", sans-serif !important;
+}
+
+.auth-input,
+.auth-muted,
+.auth-button {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.gafiton {
+  font-family: "Gafiton", sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em;
+}
+
+
+
+
+/* @keyframes fog-menu {
+  0% { opacity: 0; transform: translateY(-8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fog-dropdown {
+  animation: fog-menu 0.2s ease-out forwards;
+} */
+
+@keyframes megaFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-mega-fade {
+  animation: megaFade 0.22s ease-out forwards;
+}
+
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #e2e2e2 0%, #d7d7d7 100%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(25px);
+  border-radius: 25px;
+  padding: 35px 30px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+}
+
+.auth-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  font-size: 15px;
+  background: rgba(255,255,255,0.7);
+}
+
+.auth-button {
+  width: 100%;
+  background: #111;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.auth-muted {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+.auth-muted a {
+  color: #000;
+  font-weight: 500;
+}
+
+/* THEME */
+:root {
+  --bg: #f2f2f2;
+  --text: #111;
+  --card-bg: rgba(255,255,255,0.55);
+}
+
+.dark-theme {
+  --bg: #111;
+  --text: #f3f3f3;
+  --card-bg: rgba(40,40,40,0.55);
+}
+
+/* Apply to body */
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s ease;
+}
+
+/* Support dynamic text size */
+.text-small { font-size: 14px; }
+.text-normal { font-size: 16px; }
+.text-large { font-size: 19px; }
+
+.auth-card:hover {
+  transform: translateY(-2px);
+  transition: 0.25s ease;
+}
+
+
