@@ -6,6 +6,11 @@ type Route = {
   lastModified: string;
 };
 
+type Page = {
+  handle: string;
+  updatedAt: string;
+};
+
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : "http://localhost:3000";
@@ -32,12 +37,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
+  
+
   const pagesPromise = getPages().then((pages) =>
-    pages.map((page) => ({
-      url: `${baseUrl}/${page.handle}`,
-      lastModified: page.updatedAt,
-    }))
-  );
+  (pages as Page[]).map((page) => ({
+    url: `${baseUrl}/${page.handle}`,
+    lastModified: page.updatedAt,
+  }))
+);
 
   let fetchedRoutes: Route[] = [];
 
