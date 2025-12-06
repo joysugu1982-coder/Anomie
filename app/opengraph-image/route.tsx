@@ -1,7 +1,7 @@
 import OpengraphImage from "@/components/opengraph-image";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
-export default async function Image() {
+export async function GET() {
   return await OpengraphImage();
 }
