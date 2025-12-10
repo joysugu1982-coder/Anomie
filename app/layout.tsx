@@ -17,7 +17,6 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = await cookies();
 
@@ -28,9 +27,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en">
-      
-  
+      <head>
+        {/* Klaviyo Init */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window._klOnsite = window._klOnsite || [];`,
+          }}
+        />
 
+        {/* Klaviyo Loader (Same as Fear of God) */}
+        <script 
+          async 
+          src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=TcNjQk"
+        ></script>
+      </head>
 
       <body>
         <CartProvider cartPromise={cartPromise} country={country}>

@@ -12,7 +12,8 @@ export default function Footer() {
         {/* JOIN LIST */}
         <div>
           <h3 className="text-sm font-semibold tracking-wide mb-4">JOIN OUR LIST</h3>
-          
+          <div className="klaviyo-form-QTNCzA"></div>
+
         </div>
 
         {/* LEARN */}
