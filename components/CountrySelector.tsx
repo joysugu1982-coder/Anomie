@@ -6,18 +6,18 @@ export default function CountrySelector() {
   const [data, setData] = useState<any>(null);
   const [clientCountry, setClientCountry] = useState<string | null>(null);
 
-  // 🟢 Read cookie on client after hydration
+  // Read cookie
   useEffect(() => {
     const cookie = document.cookie
       .split("; ")
       .find((row) => row.startsWith("country="));
 
     if (cookie) {
-      setClientCountry(cookie.split("=")[1]); // "US" / "VN" etc.
+      setClientCountry(cookie.split("=")[1]);
     }
   }, []);
 
-  // 🟢 Load Shopify localization
+  // Load Shopify localization
   useEffect(() => {
     async function load() {
       const res = await fetch("/api/localization", { cache: "no-store" });
@@ -31,12 +31,13 @@ export default function CountrySelector() {
     window.location.href = `?country=${iso}`;
   }
 
-  if (!data || !clientCountry) return null;
+  // Only block rendering while Shopify data is loading
+  if (!data) return null;
 
   return (
     <select
       className="border px-3 py-2 text-sm"
-      value={clientCountry}  // 🟢 NOT data.country.isoCode
+      value={clientCountry || data.country.isoCode}
       onChange={(e) => changeCountry(e.target.value)}
     >
       {data.availableCountries.map((c: any) => (
