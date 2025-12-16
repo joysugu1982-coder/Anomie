@@ -3,23 +3,26 @@
 import Link from "next/link";
 
 import CountrySelector from "@/components/CountrySelector"; // ← IMPORTED
+import dynamic from "next/dynamic"
+
+const KlaviyoForm = dynamic(() => import("@/components/klaviyo/KlaviyoForm"), { ssr: false })
 
 export default function Footer() {
   return (
     <footer className="w-full border-t pt-12 pb-16 px-6 md:px-14 bg-white">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className="grid grid-cols-4 gap-4 md:gap-12">
 
         {/* JOIN LIST */}
         <div>
-          <h3 className="text-sm font-semibold tracking-wide mb-4">JOIN OUR LIST</h3>
-          <div className="klaviyo-form-QTNCzA"></div>
+          <h3 className="text-xs md:text-sm font-semibold tracking-wide mb-3 md:mb-4">JOIN OUR LIST</h3>
+          <KlaviyoForm />
 
         </div>
 
         {/* LEARN */}
 <div>
-  <h3 className="text-sm font-semibold tracking-wide mb-4">LEARN</h3>
-  <ul className="space-y-3 text-sm text-gray-700">
+  <h3 className="text-xs md:text-sm font-semibold tracking-wide mb-3 md:mb-4">LEARN</h3>
+  <ul className="space-y-2 md:space-y-3 text-xs md:text-sm text-gray-700">
     <li><Link href="/about">ABOUT</Link></li>
     <li><Link href="/faqs">FAQS</Link></li>
     <li><Link href="/locations">LOCATIONS</Link></li>
@@ -29,8 +32,8 @@ export default function Footer() {
 
 {/* POLICIES */}
 <div>
-  <h3 className="text-sm font-semibold tracking-wide mb-4">POLICIES</h3>
-  <ul className="space-y-3 text-sm text-gray-700">
+  <h3 className="text-xs md:text-sm font-semibold tracking-wide mb-3 md:mb-4">POLICIES</h3>
+  <ul className="space-y-2 md:space-y-3 text-xs md:text-sm text-gray-700">
     <li><Link href="/cookie-policy">COOKIE POLICY</Link></li>
     <li><Link href="/data-sharing-opt-out">PRIVACY POLICY</Link></li>
     <li><Link href="/terms-conditions">TERMS & CONDITIONS</Link></li>
@@ -41,8 +44,8 @@ export default function Footer() {
 
         {/* FOLLOW */}
         <div>
-          <h3 className="text-sm font-semibold tracking-wide mb-4">FOLLOW US</h3>
-          <ul className="space-y-3 text-sm text-gray-700">
+          <h3 className="text-xs md:text-sm font-semibold tracking-wide mb-3 md:mb-4">FOLLOW US</h3>
+          <ul className="space-y-2 md:space-y-3 text-xs md:text-sm text-gray-700">
             <li><Link href="https://instagram.com">INSTAGRAM</Link></li>
             <li><Link href="https://facebook.com">FACEBOOK</Link></li>
             <li><Link href="https://tiktok.com">TIKTOK</Link></li>
@@ -52,7 +55,7 @@ export default function Footer() {
       </div>
 
       {/* BOTTOM BAR */}
-      <div className="mt-14 flex flex-col md:flex-row justify-between gap-8 border-t pt-8">
+      <div className="mt-14 flex flex-row flex-wrap items-center justify-between gap-6 border-t pt-8">
         <div className="flex items-center gap-3">
           <span className="text-sm text-gray-700">SELECT COUNTRY</span>
 

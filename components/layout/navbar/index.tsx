@@ -19,7 +19,7 @@ export default function Navbar({ menu }: { menu: any[] }) {
     <nav className="flex items-center justify-between px-4 py-4 lg:px-6">
 
       {/* MOBILE LEFT */}
-      <div className="md:hidden flex items-center">
+      <div className="md:hidden flex items-center relative z-10">
         <MobileMenu menu={menu} />
       </div>
 
@@ -35,8 +35,8 @@ export default function Navbar({ menu }: { menu: any[] }) {
       </div>
 
       {/* CENTER LOGO */}
-      <div className="flex items-center justify-center flex-1">
-        <Link href="/" className="gafiton text-xl tracking-widest">
+      <div className="flex items-center justify-center flex-1 pointer-events-none">
+        <Link href="/" className="gafiton text-xl tracking-widest pointer-events-auto">
   ANOMIE
 </Link>
 
@@ -44,7 +44,8 @@ export default function Navbar({ menu }: { menu: any[] }) {
 
       {/* DESKTOP RIGHT */}
       <div className="hidden md:flex items-center gap-6">
-        <SearchDropdown label="Search" />
+        <SearchDropdown label="Search" link="/search" />
+
 
         <Link href="/auth/login" className="text-sm uppercase tracking-wider">
   Account
@@ -55,17 +56,13 @@ export default function Navbar({ menu }: { menu: any[] }) {
       </div>
 
       {/* MOBILE RIGHT */}
-      <div className="md:hidden flex items-center gap-4">
-
-        {/* SEARCH */}
-        <Link href="/search">
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" />
-          </svg>
-        </Link>
-
+      <div className="md:hidden flex items-center gap-4 relative z-20">
         {/* ACCOUNT */}
-        <Link href="/account">
+        <Link 
+          href="/account"
+          className="p-2 -m-2 touch-manipulation"
+          aria-label="Account"
+        >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 7.5a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.25a8.25 8.25 0 1 1 15 0" />
           </svg>

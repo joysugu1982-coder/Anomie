@@ -2,17 +2,22 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+// collections dropdown does not include the search box
 
-interface DropdownProps {
-  label: string;
-  items: { title: string; url: string }[];
-  link: string;
+interface DropdownItem {
+  title: string
+  url: string
 }
 
-export default function Dropdown({ label, items, link }: DropdownProps) {
-  const [open, setOpen] = useState(false);
-  const router = useRouter();
+interface DropdownProps {
+  label: string
+  link: string
+  items?: DropdownItem[]
+}
+
+export default function Dropdown({ label, link, items = [] }: DropdownProps) {
+  const [open, setOpen] = useState(false)
+  const router = useRouter()
 
   return (
     <div
@@ -28,7 +33,7 @@ export default function Dropdown({ label, items, link }: DropdownProps) {
         {label}
       </button>
 
-      {/* 🔥 HOVER BRIDGE — fixed flicker forever */}
+      {/* HOVER BRIDGE */}
       {open && (
         <div
           className="absolute left-0 top-full w-full h-10 z-40"
@@ -37,14 +42,13 @@ export default function Dropdown({ label, items, link }: DropdownProps) {
         />
       )}
 
-      {/* DROPDOWN */}
+      {/* DROPDOWN CONTENT */}
       {open && (
         <div
           className="
             absolute 
             left-0
             -ml-20
-            right-150
             top-10
             w-screen 
             bg-white 
@@ -56,27 +60,27 @@ export default function Dropdown({ label, items, link }: DropdownProps) {
           onMouseEnter={() => setOpen(true)}
           onMouseLeave={() => setOpen(false)}
         >
-          <div className="max-w-[1400px] mx-auto px-16 grid grid-cols-3 gap-20">
-            {items.map((item, i) => (
-              <Link
-                key={i}
-                href={item.url}
-                className="
-                  uppercase 
-                  text-[13px] 
-                  tracking-[0.20em]
-                  text-neutral-700 
-                  hover:text-black 
-                  transition
-                  block
-                "
-              >
-                {item.title}
-              </Link>
-            ))}
+          <div className="max-w-[1400px] mx-auto px-16">
+            <div className="grid grid-cols-1 gap-6">
+              <div>
+                {items.length > 0 ? (
+                  <div className="grid grid-cols-3 gap-4">
+                    {items.map((it) => (
+                      <div key={it.url} className="py-2">
+                        <a href={it.url} className="block text-sm font-medium hover:underline">
+                          {it.title}
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-sm text-gray-600">No collections available</div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}
     </div>
-  );
+  )
 }

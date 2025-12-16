@@ -2,24 +2,16 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Search from "@/components/layout/navbar/search";
 
 interface SearchDropdownProps {
-  label: string;
-  link?: string; // <-- now optional
+  label: string
+  link: string
 }
 
-
 export default function SearchDropdown({ label, link }: SearchDropdownProps) {
-  const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState("");
-  const router = useRouter();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!query.trim()) return;
-    router.push(`/search?q=${encodeURIComponent(query)}`);
-    setOpen(false);
-  };
+  const [open, setOpen] = useState(false)
+  const router = useRouter()
 
   return (
     <div
@@ -27,83 +19,50 @@ export default function SearchDropdown({ label, link }: SearchDropdownProps) {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      {/* NAV BUTTON */}
+      {/* NAV ITEM */}
       <button
-  onClick={() => link && router.push(link)}
-  className="uppercase tracking-[0.25em] text-[13px] font-medium hover:opacity-60 transition"
->
-  {label}
-</button>
+        onClick={() => router.push(link)}
+        className="uppercase tracking-[0.25em] text-[13px] font-medium hover:opacity-60 transition"
+      >
+        {label}
+      </button>
 
-
-      {/* 🔥 HOVER BRIDGE (SOLVES FLICKER) */}
+      {/* HOVER BRIDGE */}
       {open && (
         <div
-          className="
-            absolute left-0 top-full 
-            w-full h-8     /* small hover area */
-            z-40
-          "
+          className="absolute left-0 top-full w-full h-10 z-40"
           onMouseEnter={() => setOpen(true)}
           onMouseLeave={() => setOpen(false)}
         />
       )}
 
-      {/* SMALL DROPDOWN */}
+      {/* DROPDOWN - Full screen width */}
       {open && (
         <div
           className="
-            absolute 
-            left-0 
-            top-[calc(100%+8px)]
+            fixed
+            left-0
+            right-0
+            top-[60px]
+            w-full
             bg-white 
-            border border-neutral-200
-            shadow-lg
-            p-4
-            -ml-20
-            rounded-md
-            w-[260px]
+            border-t 
+            py-10 
+            shadow-sm 
             z-50
           "
           onMouseEnter={() => setOpen(true)}
           onMouseLeave={() => setOpen(false)}
         >
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-
-            {/* SEARCH INPUT */}
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search products..."
-              className="
-                border border-neutral-300 
-                px-3 py-2
-                text-sm
-                rounded-md
-                focus:outline-none
-                focus:ring-1 focus:ring-black
-              "
-            />
-
-            {/* SEARCH BUTTON BELOW */}
-            <button
-              type="submit"
-              className="
-                w-full
-                bg-black text-white
-                px-4 py-2
-                text-sm 
-                rounded-md
-                hover:bg-neutral-800
-              "
-            >
-              Search
-            </button>
-
-          </form>
+          <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-16">
+            <div className="flex justify-end">
+              <div className="w-full max-w-[420px]">
+                <Search onFocus={() => setOpen(true)} />
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
-  );
+  )
 }

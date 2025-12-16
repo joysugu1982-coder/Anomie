@@ -60,7 +60,7 @@ const domain = process.env.SHOPIFY_STORE_DOMAIN
 
 const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
 const key = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
-console.log("USING SHOPIFY TOKEN:", process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN);
+// console.log("USING SHOPIFY TOKEN:", process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN);
 
 
 type ExtractVariables<T> = T extends { variables: object }

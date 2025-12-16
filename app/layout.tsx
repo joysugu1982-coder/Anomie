@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./fonts.css";
 import "./globals.css";
 
+
 import NavbarWrapper from "@/components/layout/navbar/navbar-wrapper";
 import Footer from "@/components/layout/footer";
 import { CartProvider } from "@/components/cart/cart-context";
@@ -46,6 +47,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <CartProvider cartPromise={cartPromise} country={country}>
           <NavbarWrapper />
           <PagePaddingWrapper>{children}</PagePaddingWrapper>
+         
           <Footer />
         </CartProvider>
       </body>
