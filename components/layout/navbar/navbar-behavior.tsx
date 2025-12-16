@@ -23,8 +23,8 @@ export default function NavbarBehavior({ children }: { children: React.ReactNode
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className={`fixed top-0 left-0 w-full z-[999] transition-all duration-300 backdrop-blur-sm ${
-          active ? "bg-white/95 text-black shadow-sm" : "bg-transparent text-white"
+        className={`fixed top-0 left-0 w-full z-[999] transition-colors duration-300 ${
+          active ? "bg-white text-black shadow-sm" : "bg-transparent text-white"
         }`}
       >
         {children}

@@ -16,7 +16,7 @@ export default function Navbar({ menu }: { menu: any[] }) {
   }));
 
   return (
-    <nav className="flex items-center justify-between px-4 py-3 md:py-4 md:px-6 text-inherit">
+    <nav className="flex w-full max-w-screen-2xl items-center justify-between px-4 py-3 md:py-4 md:px-6 text-inherit mx-auto">
 
       {/* MOBILE LEFT */}
       <div className="md:hidden flex items-center relative z-10">
