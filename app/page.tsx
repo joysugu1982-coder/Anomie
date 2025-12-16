@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import AutoScrollRow from "@/components/layout/auto-scroll-row";
 import Price from "@/components/price";
 import { headers } from "next/headers";
 
@@ -64,8 +65,8 @@ console.log("COUNTRY FROM HEADER:", country);
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">New Drops</h2>
           </div>
 
-          {/* PRODUCTS STRIP (NO GAPS LIKE REPRESENT) */}
-          <div className="overflow-x-auto scrollbar-hide w-full">
+          {/* PRODUCTS STRIP (AUTO-SCROLLING) */}
+          <AutoScrollRow className="overflow-x-auto scrollbar-hide w-full">
             <div className="flex gap-3 sm:gap-4 px-4">
 
               {products.map((p) => {
@@ -93,14 +94,14 @@ console.log("COUNTRY FROM HEADER:", country);
                     <Price
   amount={p.variants[0].price.amount}
   currencyCode={p.variants[0].price.currencyCode}
-/>
+ />
 
                   </Link>
                 );
               })}
 
             </div>
-          </div>
+          </AutoScrollRow>
         </div>
       </section>
 
