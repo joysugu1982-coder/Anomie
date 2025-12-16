@@ -37,8 +37,8 @@ export default function ProductGridItems({
               )}
 
               {/* Title + FORMATTED PRICE */}
-              <div className="absolute bottom-0 left-0 w-full bg-black/60 text-white p-2 text-sm">
-                <p>{product.title}</p>
+              <div className="absolute bottom-0 left-0 w-full bg-white/85 text-black p-3 text-sm shadow-sm backdrop-blur-sm">
+                <p className="font-medium leading-tight">{product.title}</p>
 
                 <Price 
                   amount={firstVariant.price.amount}
