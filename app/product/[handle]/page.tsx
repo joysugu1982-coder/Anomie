@@ -66,7 +66,7 @@ export default async function ProductPage(props: {
   return (
     <ProductProvider>
       <div className="mx-auto max-w-screen-2xl px-4 py-6 md:py-10">
-        <div className="flex flex-col gap-6 rounded-xl border border-neutral-200 bg-white p-4 sm:p-6 md:p-10 lg:flex-row lg:gap-10 dark:border-neutral-800 dark:bg-black">
+        <div className="flex flex-col gap-6 lg:flex-row lg:gap-10">
           <div className="h-full w-full basis-full lg:basis-4/6">
             <Suspense
               fallback={

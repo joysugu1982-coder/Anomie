@@ -6,24 +6,24 @@ export default function ProseProduct({ html, className }: { html: string; classN
       className={clsx(
         `
         prose mx-auto max-w-6xl 
-        text-black leading-7
+        text-black leading-relaxed
 
-        prose-p:text-white
-        prose-strong:text-white
+        prose-p:text-neutral-700
+        prose-strong:text-black
 
-        prose-li:text-white
-        prose-ul:text-white
-        prose-ol:text-white
+        prose-li:text-neutral-700
+        prose-ul:text-neutral-700
+        prose-ol:text-neutral-700
 
-        prose-a:text-white 
-        prose-a:underline hover:prose-a:text-neutral-300
+        prose-a:text-black 
+        prose-a:underline hover:prose-a:text-neutral-600
 
-        prose-h1:text-white prose-h1:text-5xl
-        prose-h2:text-white prose-h2:text-4xl
-        prose-h3:text-white prose-h3:text-3xl
-        prose-h4:text-white prose-h4:text-2xl
-        prose-h5:text-white prose-h5:text-xl
-        prose-h6:text-white prose-h6:text-lg
+        prose-h1:text-black prose-h1:text-3xl
+        prose-h2:text-black prose-h2:text-2xl
+        prose-h3:text-black prose-h3:text-xl
+        prose-h4:text-black prose-h4:text-lg
+        prose-h5:text-black prose-h5:text-base
+        prose-h6:text-black prose-h6:text-sm
         `,
         className
       )}

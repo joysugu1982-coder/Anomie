@@ -9,17 +9,14 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 
 function SubmitButton({ availableForSale }: { availableForSale: boolean }) {
   const base =
-    "relative flex w-full items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white";
+    "flex w-full items-center justify-center bg-black py-4 text-sm font-medium uppercase tracking-widest text-white transition-opacity";
 
   if (!availableForSale) {
     return <button disabled className={base + " opacity-60"}>Out of Stock</button>;
   }
 
   return (
-    <button aria-label="Add to cart" className={base + " hover:opacity-90"}>
-      <div className="absolute left-0 ml-4">
-        <PlusIcon className="h-5" />
-      </div>
+    <button aria-label="Add to cart" className={base + " hover:opacity-80"}>
       Add To Cart
     </button>
   );
