@@ -16,7 +16,7 @@ export default function Navbar({ menu }: { menu: any[] }) {
   }));
 
   return (
-    <nav className="sticky top-0 z-40 flex items-center justify-between px-4 py-3 md:py-4 md:px-6 border-b border-neutral-200/80 bg-[rgba(248,248,246,0.92)] backdrop-blur-sm text-neutral-900">
+    <nav className="flex items-center justify-between px-4 py-3 md:py-4 md:px-6 text-inherit">
 
       {/* MOBILE LEFT */}
       <div className="md:hidden flex items-center relative z-10">
@@ -25,7 +25,7 @@ export default function Navbar({ menu }: { menu: any[] }) {
 
       {/* DESKTOP LEFT */}
       <div className="hidden md:flex md:items-center md:gap-6">
-        <Link href="/" className="text-sm font-medium uppercase tracking-[0.28em] text-neutral-900 hover:text-neutral-600 transition-colors">SD</Link>
+        <Link href="/" className="text-sm font-medium uppercase tracking-[0.28em] text-inherit hover:text-black transition-colors">SD</Link>
 
         <Dropdown
           label="Collections"
@@ -36,18 +36,18 @@ export default function Navbar({ menu }: { menu: any[] }) {
 
       {/* CENTER LOGO */}
       <div className="flex items-center justify-center flex-1 pointer-events-none">
-        <Link href="/" className="gafiton text-xl md:text-2xl tracking-[0.38em] text-neutral-900 pointer-events-auto">
+        <Link href="/" className="gafiton text-xl md:text-2xl tracking-[0.38em] text-inherit pointer-events-auto">
   ANOMIE
 </Link>
 
       </div>
 
       {/* DESKTOP RIGHT */}
-      <div className="hidden md:flex items-center gap-6 text-neutral-900">
+      <div className="hidden md:flex items-center gap-6 text-inherit">
         <SearchDropdown label="Search" link="/search" />
 
 
-        <Link href="/auth/login" className="text-xs uppercase tracking-[0.22em] text-neutral-900 hover:text-neutral-600 transition-colors">
+        <Link href="/auth/login" className="text-xs uppercase tracking-[0.22em] text-inherit hover:text-black transition-colors">
   Account
 </Link>
 
@@ -56,7 +56,7 @@ export default function Navbar({ menu }: { menu: any[] }) {
       </div>
 
       {/* MOBILE RIGHT */}
-      <div className="md:hidden flex items-center gap-3 relative z-20">
+      <div className="md:hidden flex items-center gap-3 relative z-20 text-inherit">
         {/* ACCOUNT */}
         <Link 
           href="/account"
