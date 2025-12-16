@@ -9,8 +9,8 @@ const KlaviyoForm = dynamic(() => import("@/components/klaviyo/KlaviyoForm"), { 
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t pt-12 pb-16 px-6 md:px-14 bg-white">
-      <div className="grid grid-cols-4 gap-4 md:gap-12">
+    <footer className="w-full border-t pt-10 pb-14 px-5 sm:px-6 md:px-14 bg-white">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 sm:gap-8 md:gap-12">
 
         {/* JOIN LIST */}
         <div>
@@ -55,7 +55,7 @@ export default function Footer() {
       </div>
 
       {/* BOTTOM BAR */}
-      <div className="mt-14 flex flex-row flex-wrap items-center justify-between gap-6 border-t pt-8">
+      <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center justify-between gap-5 sm:gap-6 border-t pt-8">
         <div className="flex items-center gap-3">
           <span className="text-sm text-gray-700">SELECT COUNTRY</span>
 

@@ -16,7 +16,7 @@ export default function Navbar({ menu }: { menu: any[] }) {
   }));
 
   return (
-    <nav className="flex items-center justify-between px-4 py-4 lg:px-6">
+    <nav className="flex items-center justify-between px-4 py-3 md:py-4 md:px-6 bg-white">
 
       {/* MOBILE LEFT */}
       <div className="md:hidden flex items-center relative z-10">
@@ -56,7 +56,7 @@ export default function Navbar({ menu }: { menu: any[] }) {
       </div>
 
       {/* MOBILE RIGHT */}
-      <div className="md:hidden flex items-center gap-4 relative z-20">
+      <div className="md:hidden flex items-center gap-3 relative z-20">
         {/* ACCOUNT */}
         <Link 
           href="/account"
