@@ -43,7 +43,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         ></script>
       </head>
 
-      <body>
+      <body className="overflow-x-hidden">
         <CartProvider cartPromise={cartPromise} country={country}>
           <NavbarWrapper />
           <PagePaddingWrapper>{children}</PagePaddingWrapper>

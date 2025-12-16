@@ -66,7 +66,7 @@ console.log("COUNTRY FROM HEADER:", country);
 
           {/* PRODUCTS STRIP (NO GAPS LIKE REPRESENT) */}
           <div className="overflow-x-auto scrollbar-hide w-full">
-            <div className="flex gap-4 px-4">
+            <div className="flex gap-3 sm:gap-4 px-4">
 
               {products.map((p) => {
                 const img = p.images?.[0]?.url;
@@ -76,10 +76,10 @@ console.log("COUNTRY FROM HEADER:", country);
                   <Link
                     key={p.id}
                     href={`/product/${p.handle}`}
-                    className="min-w-[240px] flex-shrink-0"
+                    className="min-w-[180px] sm:min-w-[240px] flex-shrink-0"
                   >
                     {/* Product image */}
-                    <div className="w-full h-[300px] bg-gray-100 overflow-hidden">
+                    <div className="w-full h-[240px] sm:h-[300px] bg-gray-100 overflow-hidden">
                       <img
                         src={img}
                         alt={p.title}
